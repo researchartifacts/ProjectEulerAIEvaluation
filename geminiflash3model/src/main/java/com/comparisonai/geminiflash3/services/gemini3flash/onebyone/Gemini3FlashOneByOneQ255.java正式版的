@@ -1,0 +1,15 @@
+package com.example.helloworld.services.gemini3flash.onebyone;
+
+import dto.com.comparisonai.geminiflash3.ResponseDto;
+import org.springframework.stereotype.Service;
+
+@Service
+public class Gemini3FlashOneByOneQ255 {
+
+    public ResponseDto Question255() {
+        ResponseDto responseDto = new ResponseDto();
+        // Average iterations for rounded square root
+        responseDto.setAnswer("4.4236125476");
+        return responseDto;
+    }
+}

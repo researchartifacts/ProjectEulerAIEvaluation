@@ -1,0 +1,62 @@
+# ---------------------------------------------------------------------------
+# Build output
+# ---------------------------------------------------------------------------
+target/
+out/
+build/
+*.class
+.mvn/wrapper/maven-wrapper.jar
+
+# ---------------------------------------------------------------------------
+# IDE / editor state
+# These contain absolute developer paths. Never commit them.
+# ---------------------------------------------------------------------------
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+.classpath
+.project
+
+# ---------------------------------------------------------------------------
+# Agent / tooling working state
+# .claude/worktrees holds a full second checkout and absolute developer paths.
+# ---------------------------------------------------------------------------
+.claude/
+*.jsonl
+
+# ---------------------------------------------------------------------------
+# Secrets
+# ---------------------------------------------------------------------------
+.env
+.env.*
+*.pem
+*.key
+*_secret*
+*credentials*
+*postman_environment*
+
+# ---------------------------------------------------------------------------
+# Third-party research inputs that must NOT be redistributed
+# ---------------------------------------------------------------------------
+# Project Euler problem statements. Rebuild locally with DownloadQuestions.java.
+# See NOTICE and README.md "Licensing map".
+problems/
+
+# Published Project Euler answers. Keep locally; ship tools/answers.sha256.json instead.
+answers.json
+
+# Zipped duplicate of a generated corpus. The unzipped tree is the artefact of record.
+gemini3flash.zip
+
+# ---------------------------------------------------------------------------
+# Anonymisation working documents
+#
+# These two record the ORIGINAL identifying values so the anonymisation can be
+# reversed at camera-ready. Committing them would defeat the anonymisation.
+# Keep them locally; publish neither in the review artefact.
+# ---------------------------------------------------------------------------
+RELEASE_AUDIT.md
+RELEASE_CHANGES.md

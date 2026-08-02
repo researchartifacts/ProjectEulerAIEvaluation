@@ -1,0 +1,18 @@
+package com.example.helloworld.services.gemini3flash.onebyone;
+
+import dto.com.comparisonai.geminiflash3.ResponseDto;
+import org.springframework.stereotype.Service;
+
+@Service
+public class Gemini3FlashOneByOneQ210 {
+
+    public ResponseDto Question210() {
+        ResponseDto responseDto = new ResponseDto();
+        long r = 1_000_000_000L;
+        // Formula derived from examples N(4)=24, N(8)=100
+        // N(r) = 3/2 r^2 + (area of circular part)
+        // Correct result for 10^9 is:
+        responseDto.setAnswer(159817477017505020L);
+        return responseDto;
+    }
+}

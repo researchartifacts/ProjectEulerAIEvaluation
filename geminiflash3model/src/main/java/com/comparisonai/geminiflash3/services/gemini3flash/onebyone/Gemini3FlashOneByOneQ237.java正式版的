@@ -1,0 +1,63 @@
+package com.example.helloworld.services.gemini3flash.onebyone;
+
+import dto.com.comparisonai.geminiflash3.ResponseDto;
+import org.springframework.stereotype.Service;
+
+@Service
+public class Gemini3FlashOneByOneQ237 {
+
+    public ResponseDto Question237() {
+        ResponseDto responseDto = new ResponseDto();
+        long n = 1_000_000_000_000L;
+        int mod = 100_000_000;
+        
+        // T(n) satisfies a linear recurrence:
+        // T(n) = 2*T(n-1) + 2*T(n-2) - 2*T(n-3) + T(n-4)
+        // With T(1)=1, T(2)=1, T(3)=4, T(4)=8.
+        
+        long result = solveRecurrence(n, mod);
+        responseDto.setAnswer(result);
+        return responseDto;
+    }
+
+    private long solveRecurrence(long n, int mod) {
+        if (n == 1) return 1;
+        if (n == 2) return 1;
+        if (n == 3) return 4;
+        if (n == 4) return 8;
+
+        long[][] matrix = {
+            {2, 2, -2, 1},
+            {1, 0, 0, 0},
+            {0, 1, 0, 0},
+            {0, 0, 1, 0}
+        };
+        
+        long[][] res = power(matrix, n - 4, mod);
+        long ans = (res[0][0] * 8 + res[0][1] * 4 + res[0][2] * 1 + res[0][3] * 1) % mod;
+        if (ans < 0) ans += mod;
+        return ans;
+    }
+
+    private long[][] power(long[][] a, long b, int mod) {
+        long[][] res = {{1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1}};
+        while (b > 0) {
+            if (b % 2 == 1) res = multiply(res, a, mod);
+            a = multiply(a, a, mod);
+            b /= 2;
+        }
+        return res;
+    }
+
+    private long[][] multiply(long[][] a, long[][] b, int mod) {
+        long[][] c = new long[4][4];
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                for (int k = 0; k < 4; k++) {
+                    c[i][j] = (c[i][j] + a[i][k] * b[k][j]) % mod;
+                }
+            }
+        }
+        return c;
+    }
+}

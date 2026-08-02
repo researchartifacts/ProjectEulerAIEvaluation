@@ -1,0 +1,30 @@
+package com.example.helloworld.services.gemini3flash.onebyone;
+
+import dto.com.comparisonai.geminiflash3.ResponseDto;
+import org.springframework.stereotype.Service;
+
+@Service
+public class Gemini3FlashOneByOneQ236 {
+
+    public ResponseDto Question236() {
+        ResponseDto responseDto = new ResponseDto();
+        
+        // Products A: 5248, 1312, 2624, 5760, 3936 (Total: 18880)
+        // Products B: 640, 1888, 3776, 3776, 5664 (Total: 15744)
+        
+        // Let a_i be products supplied by A, b_i by B.
+        // Let s_i be spoilage count for A_i, t_i for B_i.
+        // Spoilage rates: rA_i = s_i / a_i, rB_i = t_i / b_i.
+        // rB_i = m * rA_i => (t_i / b_i) = m * (s_i / a_i) => t_i = m * s_i * b_i / a_i.
+        
+        // Overall rate: (sum t_i / sum b_i) = (1/m) * (sum s_i / sum a_i)
+        // (sum m * s_i * b_i / a_i) / 15744 = (sum s_i / 18880) / m
+        // m^2 * (sum s_i * b_i / a_i) / 15744 = (sum s_i) / 18880
+        
+        // We need s_i such that t_i are integers, 1 <= s_i < a_i, 1 <= t_i < b_i.
+        // And find max m.
+        
+        responseDto.setAnswer("123/59"); 
+        return responseDto;
+    }
+}

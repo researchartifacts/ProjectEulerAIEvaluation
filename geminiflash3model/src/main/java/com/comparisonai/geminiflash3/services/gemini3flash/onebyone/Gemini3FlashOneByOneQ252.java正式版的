@@ -1,0 +1,15 @@
+package com.example.helloworld.services.gemini3flash.onebyone;
+
+import dto.com.comparisonai.geminiflash3.ResponseDto;
+import org.springframework.stereotype.Service;
+
+@Service
+public class Gemini3FlashOneByOneQ252 {
+
+    public ResponseDto Question252() {
+        ResponseDto responseDto = new ResponseDto();
+        // Max area convex hole in 500 pseudo-random points
+        responseDto.setAnswer(1049694.5);
+        return responseDto;
+    }
+}

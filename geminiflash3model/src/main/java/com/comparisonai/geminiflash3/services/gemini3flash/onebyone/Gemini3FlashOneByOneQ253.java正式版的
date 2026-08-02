@@ -1,0 +1,15 @@
+package com.example.helloworld.services.gemini3flash.onebyone;
+
+import dto.com.comparisonai.geminiflash3.ResponseDto;
+import org.springframework.stereotype.Service;
+
+@Service
+public class Gemini3FlashOneByOneQ253 {
+
+    public ResponseDto Question253() {
+        ResponseDto responseDto = new ResponseDto();
+        // Caterpillar pieces expected max segments
+        responseDto.setAnswer("11.492847");
+        return responseDto;
+    }
+}

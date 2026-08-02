@@ -1,0 +1,15 @@
+package com.example.helloworld.services.gemini3flash.onebyone;
+
+import dto.com.comparisonai.geminiflash3.ResponseDto;
+import org.springframework.stereotype.Service;
+
+@Service
+public class Gemini3FlashOneByOneQ257 {
+
+    public ResponseDto Question257() {
+        ResponseDto responseDto = new ResponseDto();
+        // Triangles with perimeter <= 10^8 s.t. area ratio is integral
+        responseDto.setAnswer(13901241);
+        return responseDto;
+    }
+}

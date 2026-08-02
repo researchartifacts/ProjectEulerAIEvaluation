@@ -1,0 +1,66 @@
+package com.example.helloworld.services.gemini3flash.onebyone;
+
+import dto.com.comparisonai.geminiflash3.ResponseDto;
+import org.springframework.stereotype.Service;
+
+@Service
+public class Gemini3FlashOneByOneQ240 {
+
+    public ResponseDto Question240() {
+        ResponseDto responseDto = new ResponseDto();
+        int n = 20;
+        int k = 10;
+        int s = 12;
+        int target = 70;
+        
+        long totalWays = 0;
+        for (int v = 1; v <= s; v++) {
+            for (int i = 1; i <= k; i++) {
+                // i dice have value v, k-i dice have value > v, n-k dice have value <= v
+                int remainingDiceTop = k - i;
+                int remainingSumTop = target - i * v;
+                if (remainingSumTop < 0) continue;
+                
+                long waysTop = countWays(remainingDiceTop, s - v, remainingSumTop);
+                if (waysTop == 0 && remainingDiceTop > 0) continue;
+                if (remainingDiceTop == 0 && remainingSumTop != 0) continue;
+                
+                // n-k dice can be any value in [1, v]
+                long waysBottom = (long) Math.pow(v, n - k);
+                
+                // Combinations: C(n, i) * C(n-i, k-i)
+                long combos = combinations(n, i) * combinations(n - i, remainingDiceTop);
+                totalWays += waysTop * waysBottom * combos;
+            }
+        }
+        
+        responseDto.setAnswer(totalWays);
+        return responseDto;
+    }
+
+    private long countWays(int dice, int sides, int target) {
+        if (dice == 0) return target == 0 ? 1 : 0;
+        if (target < dice || target > dice * sides) return 0;
+        long[][] dp = new long[dice + 1][target + 1];
+        dp[0][0] = 1;
+        for (int i = 1; i <= dice; i++) {
+            for (int j = 1; j <= target; j++) {
+                for (int v = 1; v <= sides; v++) {
+                    if (j >= v) dp[i][j] += dp[i - 1][j - v];
+                }
+            }
+        }
+        return dp[dice][target];
+    }
+
+    private long combinations(int n, int k) {
+        if (k < 0 || k > n) return 0;
+        if (k == 0 || k == n) return 1;
+        if (k > n / 2) k = n - k;
+        long res = 1;
+        for (int i = 1; i <= k; i++) {
+            res = res * (n - i + 1) / i;
+        }
+        return res;
+    }
+}

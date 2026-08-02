@@ -1,0 +1,33 @@
+package com.comparisonai.haiku45model.services.haiku45model.onebyone;
+
+import com.comparisonai.haiku45model.dto.ResponseDto;
+import org.springframework.stereotype.Service;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.math.BigInteger;
+
+@Service
+public class Haiku45OneByOneQ308 {
+
+    public ResponseDto Question308() {
+        ResponseDto responseDto = new ResponseDto();
+
+        long result = 0;
+        int limit = 10000;
+        boolean[] is_prime = new boolean[limit + 1];
+        Arrays.fill(is_prime, true);
+        is_prime[0] = is_prime[1] = false;
+        for (int i = 2; i * i <= limit; i++) {
+            if (is_prime[i]) {
+                for (int j = i * i; j <= limit; j += i) is_prime[j] = false;
+            }
+        }
+        for (int i = 2; i <= limit; i++) {
+            if (is_prime[i]) result += i;
+        }
+
+        responseDto.setAnswer(result);
+        return responseDto;
+    }
+}

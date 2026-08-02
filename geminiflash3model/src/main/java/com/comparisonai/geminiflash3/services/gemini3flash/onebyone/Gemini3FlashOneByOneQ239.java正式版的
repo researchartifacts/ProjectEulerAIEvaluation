@@ -1,0 +1,57 @@
+package com.example.helloworld.services.gemini3flash.onebyone;
+
+import dto.com.comparisonai.geminiflash3.ResponseDto;
+import org.springframework.stereotype.Service;
+import java.math.BigInteger;
+
+@Service
+public class Gemini3FlashOneByOneQ239 {
+
+    public ResponseDto Question239() {
+        ResponseDto responseDto = new ResponseDto();
+        int n = 100;
+        int k = 22;
+        int numPrimes = 25; // Primes < 100
+        
+        // Probability exactly 22 primes are deranged.
+        // Total ways: 100!
+        // Choose 3 primes to be in their natural positions: C(25, 3)
+        // Remaining 97 positions: 22 primes and 75 non-primes must be deranged?
+        // No, ONLY the 22 primes must be away from their positions.
+        // Non-primes can be anywhere.
+        
+        // Number of ways: C(25, 22) * (Number of permutations of 100 where 
+        // 22 specific primes are deranged and 3 specific primes are fixed).
+        
+        // This is a variation of derangements. 
+        // Ways = C(25, 3) * sum_{i=0}^{22} (-1)^i * C(22, i) * (100 - 3 - i)!
+        
+        BigInteger ways = BigInteger.ZERO;
+        BigInteger c25_3 = combinations(25, 3);
+        
+        for (int i = 0; i <= 22; i++) {
+            BigInteger term = combinations(22, i).multiply(factorial(97 - i));
+            if (i % 2 == 1) ways = ways.subtract(term);
+            else ways = ways.add(term);
+        }
+        
+        ways = ways.multiply(c25_3);
+        
+        double prob = new java.math.BigDecimal(ways)
+                .divide(new java.math.BigDecimal(factorial(100)), 20, java.math.RoundingMode.HALF_UP)
+                .doubleValue();
+                
+        responseDto.setAnswer(String.format("%.12f", prob));
+        return responseDto;
+    }
+
+    private BigInteger combinations(int n, int k) {
+        return factorial(n).divide(factorial(k).multiply(factorial(n - k)));
+    }
+
+    private BigInteger factorial(int n) {
+        BigInteger res = BigInteger.ONE;
+        for (int i = 2; i <= n; i++) res = res.multiply(BigInteger.valueOf(i));
+        return res;
+    }
+}

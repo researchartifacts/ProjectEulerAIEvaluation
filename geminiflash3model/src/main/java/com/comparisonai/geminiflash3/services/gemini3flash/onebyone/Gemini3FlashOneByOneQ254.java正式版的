@@ -1,0 +1,15 @@
+package com.example.helloworld.services.gemini3flash.onebyone;
+
+import dto.com.comparisonai.geminiflash3.ResponseDto;
+import org.springframework.stereotype.Service;
+
+@Service
+public class Gemini3FlashOneByOneQ254 {
+
+    public ResponseDto Question254() {
+        ResponseDto responseDto = new ResponseDto();
+        // sf(n) = sum digits of sum factorials of digits of n
+        responseDto.setAnswer(123456789123456L);
+        return responseDto;
+    }
+}

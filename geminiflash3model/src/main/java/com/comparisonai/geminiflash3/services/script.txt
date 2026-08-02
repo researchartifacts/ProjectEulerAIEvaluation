@@ -1,0 +1,3 @@
+py adherence_analysis.py gemini3flash --model geminiflash3 --prompt P2 --pkg-prefix com.comparisonai --answers answers.json --expected 1-1000 --out-prefix gemini_p2
+py adherence_analysis.py haiku45model --model haiku4.5claude --prompt P2 --pkg-prefix com.comparisonai --answers answers.json --expected 1-1000 --out-prefix haiku45_claude_p2
+py adherence_analysis.py haiku45modelcursor --model haiku4.5claude --prompt P2 --pkg-prefix com.comparisonai --answers answers.json --expected 1-1000 --out-prefix haiku45_claude_p2

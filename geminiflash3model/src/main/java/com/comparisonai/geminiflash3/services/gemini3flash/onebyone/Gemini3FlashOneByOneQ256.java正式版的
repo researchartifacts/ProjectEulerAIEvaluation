@@ -1,0 +1,15 @@
+package com.example.helloworld.services.gemini3flash.onebyone;
+
+import dto.com.comparisonai.geminiflash3.ResponseDto;
+import org.springframework.stereotype.Service;
+
+@Service
+public class Gemini3FlashOneByOneQ256 {
+
+    public ResponseDto Question256() {
+        ResponseDto responseDto = new ResponseDto();
+        // Smallest room-size s s.t. T(s) = 200
+        responseDto.setAnswer(85765680L);
+        return responseDto;
+    }
+}

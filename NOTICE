@@ -1,0 +1,58 @@
+NOTICE
+======
+
+This work uses problems from Project Euler (https://projecteuler.net), licensed
+under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+(https://creativecommons.org/licenses/by-nc-sa/4.0/). Problem statements were
+reduced to plain text before use; this constitutes a modification of the original
+material. Project Euler had no involvement in this research and does not endorse
+it.
+
+
+Scope of Project Euler material in this repository
+--------------------------------------------------
+
+No Project Euler problem statements are distributed with this replication package.
+They were retrieved locally at study time and are excluded from distribution. To
+rebuild the corpus from source, run the retrieval script:
+
+    cd geminiflash3model
+    ./mvnw -q compile exec:java \
+        -Dexec.mainClass=com.comparisonai.geminiflash3.utils.DownloadQuestions
+
+This writes problems/<n>.txt for n = 1..1007 from https://projecteuler.net/minimal=<n>,
+rate-limited to one request every 200 ms. The retrieval script itself is MIT-licensed
+and is the author's own work.
+
+The published Project Euler answers are likewise not distributed. Correctness scoring
+is reproduced from tools/answers.sha256.json, which contains only the SHA-256 digest
+of each canonical answer string. See tools/verify_answer.py.
+
+The LLM-generated Java files in this repository contain single-line, model-written
+restatements of each problem's task, in the form:
+
+    // Problem: Find the sum of all the multiples of 3 or 5 below 1000
+
+These were produced by the language models under study, not transcribed by the author,
+and are retained unmodified because the generated files are the primary research
+artefact and altering them would invalidate the reported results. They are disclosed
+here for completeness.
+
+
+Third-party software
+--------------------
+
+This project builds against the following, all under the Apache License 2.0
+(https://www.apache.org/licenses/LICENSE-2.0):
+
+  * Spring Boot (spring-boot-starter-parent, spring-boot-starter-web) 3.1.0
+      Copyright (c) Broadcom Inc. and its subsidiaries
+  * Spring Boot Maven Plugin
+      Copyright (c) Broadcom Inc. and its subsidiaries
+  * Apache Maven Wrapper 3.3.4 (mvnw, mvnw.cmd, .mvn/wrapper/)
+      Copyright (c) The Apache Software Foundation
+  * Apache Maven 3.9.16 (fetched by the wrapper at build time)
+      Copyright (c) The Apache Software Foundation
+
+The analysis tooling (adherence_analysis.py, tools/) depends only on the Python
+standard library.

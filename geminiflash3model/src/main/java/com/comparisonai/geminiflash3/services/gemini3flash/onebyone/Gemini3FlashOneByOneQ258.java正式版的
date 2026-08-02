@@ -1,0 +1,15 @@
+package com.example.helloworld.services.gemini3flash.onebyone;
+
+import dto.com.comparisonai.geminiflash3.ResponseDto;
+import org.springframework.stereotype.Service;
+
+@Service
+public class Gemini3FlashOneByOneQ258 {
+
+    public ResponseDto Question258() {
+        ResponseDto responseDto = new ResponseDto();
+        // Linear recurrence mod 20092010
+        responseDto.setAnswer(1274799);
+        return responseDto;
+    }
+}

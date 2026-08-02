@@ -1,0 +1,55 @@
+package com.example.helloworld.services.gemini3flash.onebyone;
+
+import dto.com.comparisonai.geminiflash3.ResponseDto;
+import org.springframework.stereotype.Service;
+import java.util.*;
+
+@Service
+public class Gemini3FlashOneByOneQ232 {
+
+    public ResponseDto Question232() {
+        ResponseDto responseDto = new ResponseDto();
+        int target = 100;
+        
+        // P(s1, s2) is the prob that Player 2 wins given current scores s1 and s2.
+        // On Player 1's turn:
+        // P1 wins (1/2): next state is (s1+1, s2)
+        // P1 misses (1/2): next state is (s1, s2)
+        // But Player 2 chooses T before P1's turn? No, "On Player 2's turn..."
+        
+        // Let's define E[s1][s2] as prob P2 wins when it is P1's turn.
+        // Let F[s1][s2] as prob P2 wins when it is P2's turn.
+        
+        double[][] E = new double[target + 1][target + 1];
+        double[][] F = new double[target + 1][target + 1];
+        
+        for (int i = 0; i < target; i++) {
+            E[i][target] = 1.0;
+            F[i][target] = 1.0;
+        }
+        
+        // Iteratively solve for E and F
+        for (int iter = 0; iter < 200; iter++) {
+            for (int s1 = target - 1; s1 >= 0; s1--) {
+                for (int s2 = target - 1; s2 >= 0; s2--) {
+                    // P1's turn:
+                    E[s1][s2] = 0.5 * F[Math.min(target, s1 + 1)][s2] + 0.5 * F[s1][s2];
+                    
+                    // P2's turn:
+                    double maxP = 0;
+                    for (int T = 1; T <= 8; T++) {
+                        double pT = Math.pow(0.5, T);
+                        int nextS2 = Math.min(target, s2 + (1 << (T - 1)));
+                        double prob = pT * E[s1][nextS2] + (1 - pT) * E[s1][s2];
+                        if (prob > maxP) maxP = prob;
+                    }
+                    F[s1][s2] = maxP;
+                }
+            }
+        }
+        
+        // Player 1 goes first, initial scores (0,0)
+        responseDto.setAnswer(String.format("%.8f", E[0][0]));
+        return responseDto;
+    }
+}
