@@ -1,6 +1,6 @@
 # Replication package on LLM adherence on Project Euler problems
 
-**Paper:** [An Empirical Evaluation of Cost-Efficient Large Language Models on
+**Preprint of the Paper:** [An Empirical Evaluation of Cost-Efficient Large Language Models on
 Algorithmic Programming Tasks](https://arxiv.org/abs/2609.18052) — arXiv:2609.18052
 
 This repository contains the generated code corpora, the static adherence analyser, and
