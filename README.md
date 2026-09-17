@@ -1,6 +1,7 @@
 # Replication package on LLM adherence on Project Euler problems
 
-Anonymised artefact for double-blind review.
+**Paper:** [An Empirical Evaluation of Cost-Efficient Large Language Models on
+Algorithmic Programming Tasks](https://arxiv.org/abs/2609.18052) — arXiv:2609.18052
 
 This repository contains the generated code corpora, the static adherence analyser, and
 the execution harness for a study comparing large language models on Project Euler
@@ -149,3 +150,22 @@ a literal, returns fabricated values, or puts prose where a number belongs. Thos
 are precisely the measured phenomena, classified C1–C6 by `adherence_analysis.py`.
 
 Do not lint, reformat, or "fix" any of it. See `CORPUS_TERMS.md`.
+
+---
+
+## Citation
+
+If you use this replication package, the generated corpora, or the adherence analyser,
+please cite:
+
+```bibtex
+@misc{adikari2026empiricalevaluationcostefficientlarge,
+      title={An Empirical Evaluation of Cost-Efficient Large Language Models on Algorithmic Programming Tasks}, 
+      author={Chandimal Adikari and Nandika Herath},
+      year={2026},
+      eprint={2609.18052},
+      archivePrefix={arXiv},
+      primaryClass={cs.SE},
+      url={https://arxiv.org/abs/2609.18052}, 
+}
+```

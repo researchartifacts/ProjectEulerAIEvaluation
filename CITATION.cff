@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+title: Replication package on LLM adherence on Project Euler problems
+message: >-
+  If you use this replication package, the generated corpora, or the adherence
+  analyser, please cite the preprint under "preferred-citation" below.
+type: software
+authors:
+  - given-names: Chandimal
+    family-names: Adikari
+  - given-names: Nandika
+    family-names: Herath
+repository-code: https://github.com/researchartifacts/ProjectEulerAIEvaluation
+abstract: >-
+  Generated code corpora, static adherence analyser, and execution harness for an
+  empirical study of cost-efficient large language models on Project Euler
+  problems under two prompting conditions. Licensing is mixed: the authors' own
+  code is MIT, the generated corpora carry no ownership claim, and no Project
+  Euler content is redistributed. See LICENSE, NOTICE and CORPUS_TERMS.md.
+keywords:
+  - large language models
+  - code generation
+  - empirical software engineering
+  - replication package
+  - Project Euler
+preferred-citation:
+  type: article
+  title: >-
+    An Empirical Evaluation of Cost-Efficient Large Language Models on
+    Algorithmic Programming Tasks
+  authors:
+    - given-names: Chandimal
+      family-names: Adikari
+    - given-names: Nandika
+      family-names: Herath
+  year: 2026
+  url: https://arxiv.org/abs/2609.18052
+  identifiers:
+    - type: other
+      value: arXiv:2609.18052
+      description: arXiv preprint identifier

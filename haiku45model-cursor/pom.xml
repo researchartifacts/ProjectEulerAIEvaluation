@@ -29,9 +29,10 @@
 	</licenses>
 	<developers>
 		<developer>
-			<name>AUTHOR</name>
-			<email>author@example.org</email>
-			<organization>INSTITUTION</organization>
+			<name>Chandimal Adikari</name>
+		</developer>
+		<developer>
+			<name>Nandika Herath</name>
 		</developer>
 	</developers>
 	<scm>
